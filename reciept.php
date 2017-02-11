@@ -72,14 +72,10 @@ while($row2=mysql_fetch_assoc($res2))
 $time=$row2["approvetime"];
 $date=$row2["approvedate"];
 $issue=$row2["issue"];
+$status=$row2["status"];
 $description=$row2["discription"];
 }
-
-
-
 ?>
-
-
 	 	<header id="header-wrap">
 		<section id="header">
           <div class="logo-menu">
@@ -99,7 +95,7 @@ $description=$row2["discription"];
 					  <li><a href="index.php">HOME</a></li>                                    
 					  <li><a href="search.php?">HOSPITALS</a></li>
 					  <li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
-					  <li><a href="emergency.php" >EMERGENCY</a></li>
+					  
 					  <li><a href="faq.php" >FAQ</a></li>
 					  <?php
 						if(empty($_SESSION['register']))
@@ -110,7 +106,7 @@ $description=$row2["discription"];
 						else
 						{
 						?>
-						<li><a href="Sign_out.php">LOGOUT</a></li> 
+						<li><a href="patientprofile.php">PROFILE</a></li> <li><a href="Sign_out.php">LOGOUT</a></li> 
 						<?php
 						}
 						?>							
@@ -143,7 +139,7 @@ $description=$row2["discription"];
 					<li><a href="index.php">HOME</a></li>                                    
 					<li><a href="search.php?">HOSPITALS</a></li>
 					<li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
-					<li><a href="emergency.php" >EMERGENCY</a></li>
+					
 					<li><a href="faq.php" >FAQ</a></li>
 					<?php
 						if(empty($_SESSION['register']))
@@ -154,7 +150,7 @@ $description=$row2["discription"];
 						else
 						{
 					?>
-						<li><a href="Sign_out.php">LOGOUT</a></li> 
+						<li><a href="patientprofile.php">PROFILE</a></li> <li><a href="Sign_out.php">LOGOUT</a></li> 
 					<?php
 						}
 					?>
@@ -178,7 +174,7 @@ $description=$row2["discription"];
 				<b> Email:</b>&nbsp&nbsp&nbsp<?php echo $email;?>
 			</div>
 			<div class="col-xs-6 col-sm-5">
-			   <b> Age:</b>&nbsp&nbsp&nbsp<?php echo $age;?>
+			   <b> DOB:</b>&nbsp&nbsp&nbsp<?php echo $age;?>
 			</div>
 			<div class="col-xs-6 col-sm-5">
 			   <b> Gender:</b>&nbsp&nbsp&nbsp<?php echo $gender;?>
@@ -186,36 +182,29 @@ $description=$row2["discription"];
 			<div class="col-xs-6 col-sm-5">
 			   <b> Phone-Number:</b>&nbsp&nbsp&nbsp<?php echo $phone;?>
 			</div>
-			<div class="col-xs-12 col-sm-4">
+			<div class="col-xs-6 col-sm-5">
+			   <b> Status:</b><?php echo $status;?>
+			</div>
+			<div class="col-xs-6 col-sm-4">
 				<b> Identity Type:</b><?php echo $type;?>
 			</div>
-			
-			<div class="col-xs-12 col-sm-3">
+			<div class="col-xs-6 col-sm-5">
 				<?php echo '<b>'.$type.'</b> : '.$value;?>
 			</div>
-			<div class="col-md-6" >
+			<div class="col-md-12" >
 				<b> Address:</b> <?php echo $address;?>
 			</div>
-			<div class="col-sm-3">
-				<b>Patient ID:</b>&nbsp&nbsp&nbsp<?php echo $pid;?>
-			</div>			
-			<div class="col-md-12" >
-				<div class="col-md-4">
-				<b>  Symptoms</b>:<?php echo $issue;?>
-				</div>
-				<div class="col-sm-4">
-					<b>Time:</b>&nbsp&nbsp&nbsp<?php echo $time;?>
-				</div>				
-				<div class="col-sm-4">
-					<b>Date:</b>&nbsp&nbsp&nbsp<?php echo $date;?>
-				</div>
+			<div class="col-md-4">
+			<b>Symptoms</b>:<?php echo $issue;?>
+			</div>
+			<div class="col-sm-4">
+				<b>Time:</b>&nbsp&nbsp&nbsp<?php echo $time;?>
+			</div>				
+			<div class="col-sm-4">
+				<b>Date:</b>&nbsp&nbsp&nbsp<?php echo $date;?>
 			</div>
 			<div class="col-md-12" >
 				<b> Description: </b><?php echo $description;?><br><br>
-			</div>
-			
-			<div class="col-xs-12 col-sm-4">
-				<b> Identity Type:</b><?php echo $type;?>
 			</div>
 		</div>
 		<div class="col-md-12" >
@@ -228,19 +217,9 @@ $description=$row2["discription"];
 			<b> Address: </b><?php echo $addressh;?>
 		</div>
 		<div class="col-md-12" >
-            <center> <h3>Location</h3></center>
-			<iframe
-			  width="800px";
-			  height="600px"
-			  frameborder="0" style="border:0"
-			  src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAbd318t5kTkd5tBcqCxISXCeWRSdcL-sI&origin=<?php echo $address;?>&destination=<?php echo $nameh;?>,&avoid=tolls|highways">
-			</iframe>
-        </div>
-		<div class="col-md-12"">
-			<div class="row">
-				<br><a href="Sign_out.php" class="btn btn-info">logout and submit</a>
-				<button class="btn btn-info" onclick="window.print();">print</button>
-			</div>
+		<br>
+			<button class="btn btn-common" onclick="window.print();">Print Application</button>
+			<br>
 		</div>
 	</div>
 

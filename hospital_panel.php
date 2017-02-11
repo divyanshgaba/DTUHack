@@ -3,6 +3,7 @@
 <?php
 include 'conn.php';
 session_start();
+if($_SESSION)
 //echo "<h1>hi".$_SESSION['hospitalid']."</h1>";
 /*if(strcmp($_SESSION['user'],"hospital"))
 {
@@ -20,62 +21,98 @@ session_start();
     <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
     <link rel="stylesheet" media="screen" href="assets/fonts/font-awesome/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/fonts/plain/plain-fonts.css">
-    
-     
+         
     <link rel="stylesheet" type="text/css" href="assets/fonts/lovelo/lovelo.css">
     <link rel="stylesheet" type="text/css" href="assets/extras/owl/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="assets/extras/owl/owl.theme.css">
     <link rel="stylesheet" type="text/css" href="assets/extras/animate.css">
     <link rel="stylesheet" type="text/css" href="assets/extras/slicknav.css">
 
-
 	<link rel="stylesheet" type="text/css" href="assets/css/colors/orange.css" title="orange" media="screen" />
     <link rel="stylesheet" href="css/style.css">
-    
-  </head>
-  <body>
+		
+	</head>
+<body>
 
-      	<header id="header-wrap">
-		<section id="header">
+    <header id="header-wrap">
+    <section id="header">
           <div class="logo-menu">
-			<nav class="navbar navbar-default navbar-plain" role="navigation" data-spy="affix" data-offset-top="50">
-				<div class="container">
+      <nav class="navbar navbar-default navbar-plain" role="navigation" data-spy="affix" data-offset-top="50">
+        <div class="container">
 
-					 <div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-					</button>
-					<a class="navbar-brand" href="index.php">
-					  <h2>DIGITALISATION</h2>
-					</a>
-				  </div>
-				
-				  <div class="collapse navbar-collapse" id="navbar">
-					<ul class="nav navbar-nav animated-nav navbar-right">
-					<li><a href="hospital_panel.php">APPOINTMENTS</a></li>                                    
-					<li><a href="hospital_profile.php">PROFILE</a></li>
-					<li><a href="patient_details.php">PATIENT DETAILS</a></li>
-					<li><a href="Sign_out.php">LOGOUT</a></li> 
-					<li><a href="contactus.php">CONTACT US</a></li>
-				</ul>       
-				  </div>
-				</div>
+           <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+          </button>
+          <a class="navbar-brand" href="index.php">
+            <h2>DIGIHOPE</h2>
+          </a>
+          </div>
+        
+          <div class="collapse navbar-collapse" id="navbar">
+          <ul class="nav navbar-nav animated-nav navbar-right">
+          	                                  
+            <li><a href="hospital_panel.php">Dashboard</a></li>                                    
+            <li><a href="hospital_profile.php">Profile</a></li>
 
-				<ul class="wpb-mobile-menu">
-					<li><a href="hospital_panel.php">APPOINTMENTS</a></li>                                    
-					<li><a href="hospital_profile.php">PROFILE</a></li>
-					<li><a href="patient_details.php">PATIENT DETAILS</a></li>
-					<li><a href="Sign_out.php">LOGOUT</a></li> 
-					<li><a href="contactus.php">CONTACT US</a></li>
-				</ul>
-				
-			</nav>
-			  
+            <?php
+            if(empty($_SESSION['register']))
+            {?>
+            <li><a href="sign.php" >Sign In</a></li>
+            <?php
+            }
+            else if($_SESSION['register']=="hospital")
+            {
+            ?>
+            <li><a href="Sign_out.php">Sign Out</a></li> 
+            <?php
+            }
+            ?>              
+                
+                  <!-- Search Ends -->
+                  
+                </ul>
+                
+                <!-- Form for navbar search area -->
+               
+                <!-- Search form ends -->
+          </ul>       
+          </div>
+        </div>
+
+        <ul class="wpb-mobile-menu">
+          <li><a href="index.php">HOME</a></li>                                    
+          <li><a href="search.php?">HOSPITALS</a></li>
+          <li><a href="appointment.php">Appointments</a></li>
+          <?php
+            if(empty($_SESSION['register']))
+          {?>
+            <li><a href="sign.php" >Sign In</a></li>
+          <?php
+            }
+            else
+            {
+          ?>
+            <li><a href="patientprofile.php">Dashboard</a></li>
+            <li><a href="Sign_out.php">Sign Out</a></li> 
+          <?php
+            }
+          ?>
+          <li class="search">
+                    <a href="#" class="open-search">
+                      <i class="fa fa-search">Search
+                      </i>
+                    </a>
+                  </li>
+        </ul>
+        
+      </nav>
+        
         </div>
       
       </section>    
     </header>
 <?php 
-		$id=$_SESSION['hospitalid'];
+		$id=$_SESSION['hid'];
 		$sql="select * from hospital where id='$id'";
 		$res=mysql_query($sql);
 		$row=mysql_fetch_assoc($res);
@@ -85,7 +122,7 @@ session_start();
         <div class="row">
 
 		<div class="col-md-4">
-            <div class="sidebar">
+            <div style="margin-left:-30px;" class="sidebar">
               <div class="popular-post widget">
                 <h4 class="widget-title"><?php echo $row['name']; ?></h4>
                 
@@ -96,21 +133,20 @@ session_start();
 				  </div>
 				  <br>
                   <?php
-					echo "<b>Address : </b>".$row["address_First_Line"].",",$row["district"].",".$row["state"]." - ".$row["pincode"].
-					"<br/><b>Hospital Type</b> : ".$row["hospitalcategory"]."<br/>
+					echo "<b>Hospital Type</b> : ".$row["hospitalcategory"]."<br/>
 					<b>Website : </b><a href=".$row["website"]." target=_blank >".$row["website"]."</a>".
 					"<br/><b>Telephone : </b>".$row["telephone"]."<br/>
-					<b>Email ID : </b>".$row["hospitalprimaryemailid"];
-					if($row["totalnumofbeds"]=="NA")
-						echo "<br/><b>Beds Avalaible : </b>5";
-					else
-						echo "<br/><b>Beds Avalaible : </b>".$row["totalnumofbeds"];
+					<b>Email ID : </b>".$row["hospitalprimaryemailid"]."<br/><b>Address : </b>".$row["address_First_Line"].",",$row["district"].",".$row["state"]." - ".$row["pincode"].
+					"<br/>";
+				
 				?> 
 
                 </ul>
               </div>
             </div>
         </div>
+		
+		
 		<div class="col-sm-8" style="margin-top: -80px">
 		   <div class="row">
           <div class="main">
@@ -133,7 +169,7 @@ session_start();
                <ol class="commentlist">
                 <li class="comment">
 					<?php
-						$hid=$_SESSION['hospitalid'];
+						$hid=$_SESSION['hid'];
 						$sql1="select * from appointment where status='pending' and hid='$hid'";
 						$res1=mysql_query($sql1);
 						$row1=mysql_fetch_array($res1);
@@ -152,15 +188,19 @@ session_start();
 						<cite class="fn"><?php echo $row2['name']; ?></cite>
 						<time><?php echo $row1['applicationtime']." , ".$row1['applicationdate']; ?></time>
 						<section class="comment_content clearfix">
-							<p><?php echo $row1['issue']."<br/>".$row1['discription']; ?></p>.
+							<p><?php echo $row1['issue']."<br/>".$row1['discription'];?></p>
 						</section>
-						
 						<form action="patient_submit.php" method="POST">
 							<?php echo '<input name="pid" value='.$row1['pid'].' hidden />';?>
-							<input type="date" name="date" >Date</input> 
-							<input type="time" name="time" >time</input> 
-							<input  class="btn btn-danger btn-sm"  type="submit" name="submit" value="APPROVE" />
-							<input  class="btn btn-danger btn-sm"  type="submit" name="submit" value="REJECT" />
+							Date&nbsp&nbsp:&nbsp&nbsp<input type="date" name="date" id="date_approve" required>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							Time&nbsp&nbsp:&nbsp&nbsp <input type="time" name="time" id="time_approve" required>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							<input  class="btn btn-danger btn-sm" type="submit" name="submit" value="APPROVE" />
+						</form>
+						<br/>
+						<form action="patient_submit.php" method="POST">
+							<?php echo '<input name="pid" value='.$row1['pid'].' hidden />';?>
+							Reason for Rejection : <input type="text" size="40" name="reject" id="date_approve" required />
+							<input class="btn btn-danger btn-sm" type="submit" name="submit" value="REJECT" />
 						</form>
 						<hr/>
 					</div>
@@ -174,7 +214,7 @@ session_start();
                <ol class="commentlist">
                 <li class="comment">
                   <?php
-					$hid=$_SESSION['hospitalid'];
+					$hid=$_SESSION['hid'];
 					$sql1="select * from appointment where status='approve' and hid='$hid'";
 					$res1=mysql_query($sql1);
 					if (! $res1){
@@ -188,11 +228,13 @@ session_start();
 				?>
                   <article class="clearfix comment-container">
                     <div class="comment-content" style="padding-top:20px;">
-                      <cite class="fn" style="margin-right:10px;"><b><?php echo strtoupper($row2['name']); ?></b></cite>
-                      <time><?php echo $row1['applicationtime']." , ".$row1['applicationdate']; ?></time>
-                      <section class="comment_content clearfix">
-                        <p><?php echo "<b>PROBLEM : </b>".$row1['issue']."<br/><b>DESCRIPTION : </b>".$row1['discription']; ?></p>.
-                      </section>
+                      <cite class="fn" style="margin-right:10px;"><b><?php echo strtoupper($row2['name']); ?></b><br><br></cite>
+					  
+                      <time><b>Appointment Date & Time: </b><?php echo $row1['approvetime']." , ".$row1['approvedate']; ?></time>
+                      
+                        <p><?php echo "<b>PROBLEM : </b>".$row1['issue']."<br/><b>DESCRIPTION : </b>".$row1['discription']; ?></p>
+						 <time style="float:right"><?php echo $row1['applicationtime']." , ".$row1['applicationdate']; ?></time>
+                      
                     </div>
 					</article>
 					<hr/>
@@ -205,7 +247,7 @@ session_start();
                 <ol class="commentlist">
                 <li class="comment">
                    <?php
-						$hid=$_SESSION['hospitalid'];
+						$hid=$_SESSION['hid'];
 						$sql1="select * from appointment where status='reject' and hid='$hid'";
 						$res1=mysql_query($sql1);
 						while($row1=mysql_fetch_assoc($res1)){
@@ -216,11 +258,12 @@ session_start();
 				?>
                   <article class="clearfix comment-container">
                     <div class="comment-content" style="padding-top:20px;">
-                      <cite class="fn" style="margin-right:10px;"><b><?php echo strtoupper($row2['name']); ?></b></cite>
-                      <time><?php echo $row1['applicationtime']." , ".$row1['applicationdate']; ?></time>
-                      <section class="comment_content clearfix">
-                        <p><?php echo "<b>PROBLEM : </b>".$row1['issue']."<br/><b>DESCRIPTION : </b>".$row1['discription']; ?></p>.
-                      </section>
+                      <cite class="fn" style="margin-right:10px;"><b><?php echo strtoupper($row2['name']); ?></b><br></cite>
+                     <div>
+                      
+                        <p><?php echo "<b>PROBLEM : </b>".$row1['issue']."<br/><b>DESCRIPTION : </b>".$row1['discription']."<br><b>Reason: </b>".$row1["reason"]; ?></p>
+						 <time style="float:right"><?php echo $row1['applicationtime']." , ".$row1['applicationdate'];?></time>
+                     
                     </div>
 					</article>
 					<hr/>
@@ -239,24 +282,9 @@ session_start();
         </div>
       </div>
     </section>
-	 
- 	<footer>
-    
-	  <div id="copyright">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-9 col-sm-6">
-              <p class="copyright-text">
-                DOCTOR VECTOR <br>
-				<a href="contactus.php">
-				Contact Us.
-				</a>
-              </p>
-            </div>
-            </div>
-        </div>
-      </div>
-    </footer>
+	 </div>
+	 </div>
+ 	
 	
     <script src="assets/js/jquery-min.js">
     </script>

@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-		APPOINTMENT
+		Appointment
     </title>
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
@@ -44,7 +44,7 @@
 			frm.phone.focus(); 
 			return false;
 		}
-		if(!((frm.identitytype.value) == "Adhar Card Number(ACN)"))
+		if(((frm.identitytype.value) == "Adhar Card Number(ACN)"))
 		{
 			if(!((frm.identityvalue.value).length == 6))
 			{
@@ -53,7 +53,7 @@
 				return false;
 			}
 		}		
-		if(!((frm.identitytype.value) == "Driving Licence Number(DLN)"))
+		if(((frm.identitytype.value) == "Driving Licence Number(DLN)"))
 		{
 			if(!((frm.identityvalue.value).length == 6))
 			{
@@ -68,42 +68,41 @@
   </head>
   <body>
 
-     	<header id="header-wrap">
-		<section id="header">
+    <header id="header-wrap">
+    <section id="header">
           <div class="logo-menu">
-			<nav class="navbar navbar-default navbar-plain" role="navigation" data-spy="affix" data-offset-top="50">
-				<div class="container">
+      <nav class="navbar navbar-default navbar-plain" role="navigation" data-spy="affix" data-offset-top="50">
+        <div class="container">
 
-					 <div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-					</button>
-					<a class="navbar-brand" href="index.php">
-					  <h2>DIGITALISATION</h2>
-					</a>
-				  </div>
-				
-				  <div class="collapse navbar-collapse" id="navbar">
-					<ul class="nav navbar-nav animated-nav navbar-right">
-					  <li><a href="index.php">HOME</a></li>                                    
-					  <li><a href="search.php?">HOSPITALS</a></li>
-					  <li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
-					  <li><a href="emergency.php" >EMERGENCY</a></li>
-					  <li><a href="faq.php" >FAQ</a></li>
-					  <?php
-						if(empty($_SESSION['register']))
-						{?>
-					  <li><a href="sign.php" >LOGIN</a></li>
-					  <?php
-						}
-						else
-						{
-						?>
-						<li><a href="Sign_out.php">LOGOUT</a></li> 
-						<?php
-						}
-						?>							
-					  <li><a href="contactus.php">CONTACT US</a></li>
-					      <li class="search">
+           <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+          </button>
+          <a class="navbar-brand" href="index.php">
+            <h2>DIGIHOPE</h2>
+          </a>
+          </div>
+        
+          <div class="collapse navbar-collapse" id="navbar">
+          <ul class="nav navbar-nav animated-nav navbar-right">
+            <li><a href="index.php">HOME</a></li>                                    
+            <li><a href="search.php?">HOSPITALS</a></li>
+            <li><a href="appointment.php">Appointments</a></li>
+
+            <?php
+            if(empty($_SESSION['register']))
+            {?>
+            <li><a href="sign.php" >Sign In</a></li>
+            <?php
+            }
+            else
+            {
+            ?>
+            <li><a href="patientprofile.php">Dashboard</a></li>
+            <li><a href="Sign_out.php">Sign Out</a></li> 
+            <?php
+            }
+            ?>              
+                <li class="search">
                     <a href="#" class="open-search">
                       <i class="fa fa-search">
                       </i>
@@ -124,34 +123,38 @@
                   </div>
                 </form>
                 <!-- Search form ends -->
-					</ul>       
-				  </div>
-				</div>
+          </ul>       
+          </div>
+        </div>
 
-				<ul class="wpb-mobile-menu">
-					<li><a href="index.php">HOME</a></li>                                    
-					<li><a href="search.php?">HOSPITALS</a></li>
-					<li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
-					<li><a href="emergency.php" >EMERGENCY</a></li>
-					<li><a href="faq.php" >FAQ</a></li>
-					<?php
-						if(empty($_SESSION['register']))
-					{?>
-					  <li><a href="sign.php" >LOGIN</a></li>
-					<?php
-						}
-						else
-						{
-					?>
-						<li><a href="Sign_out.php">LOGOUT</a></li> 
-					<?php
-						}
-					?>
-					<li><a href="contactus.php">CONTACT US</a></li>
-				</ul>
-				
-			</nav>
-			  
+        <ul class="wpb-mobile-menu">
+          <li><a href="index.php">HOME</a></li>                                    
+          <li><a href="search.php?">HOSPITALS</a></li>
+          <li><a href="appointment.php">Appointments</a></li>
+          <?php
+            if(empty($_SESSION['register']))
+          {?>
+            <li><a href="sign.php" >Sign In</a></li>
+          <?php
+            }
+            else
+            {
+          ?>
+            <li><a href="patientprofile.php">Dashboard</a></li>
+            <li><a href="Sign_out.php">Sign Out</a></li> 
+          <?php
+            }
+          ?>
+          <li class="search">
+                    <a href="#" class="open-search">
+                      <i class="fa fa-search">Search
+                      </i>
+                    </a>
+                  </li>
+        </ul>
+        
+      </nav>
+        
         </div>
       
       </section>    
@@ -168,7 +171,7 @@
     </div>
 	<?php
 		$id=$_SESSION['id'];
-		$sql="select * from patient where id= '$id'";
+		$sql="select * from patient where pid= '$id'";
 		$res=mysql_query($sql);
 		$row=mysql_fetch_assoc($res);
 	?>
@@ -178,7 +181,7 @@
 			<form action="emersubmit.php?type=appointment" method="post" name="frm" class="form-horizontal">
 				<div class="form-group">
 					<div class="col-md-5">
-						<?php echo "<input class='form-control' name='Name' id='author' value='".$row['name']."' type='text' placeholder='".$row['name']."'  required />"; ?>
+						<?php echo "</b><input class='form-control' name='Name' id='author' value='".$row['name']."' type='text' placeholder='".$row['name']."'  required />"; ?>
 					</div>
 				</div>
 				<div class="form-group">
@@ -186,9 +189,9 @@
 						<?php echo "<input class='form-control' name='Email' id='author' value='".$row['email']."' type='email' placeholder='".$row['email']."' required />"; ?>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" >
 					<div class="col-md-5">
-						<?php echo "<input class='form-control' name='dob' id='author' value='".$row['dob']."' type='date' placeholder='".$row['dob']."' required />"; ?>
+						<?php echo "<input class='form-control' name='dob' id='author' value='".$row['dob']."' type='date' placeholder='".$row['dob']."' hidden/>"; ?>
 					</div>
 				</div>
 				<div class="form-group">
@@ -231,8 +234,10 @@
 					<div class="col-xs-6 col-sm-5">
 						<select name="identitytype" class="form-control">
 							<?php echo "<option value='".$row['identitytype']."'>".$row['identitytype']."</option>"; ?>
-							<option value="Adhar Card Number(ACN)">Adhar Card Number(ACN)</option>
-							<option value="Driving Licence Number(DLN)">Driving Licence Number(DLN)</option>
+							<?php if($row['identitytype']!="Adhar Card Number(ACN)") {
+							echo '<option value="Adhar Card Number(ACN)">Adhar Card Number(ACN)</option>';}
+							else{
+							echo '<option value="Driving Licence Number(DLN)">Driving Licence Number(DLN)</option>';}?>
 						</select>
 					</div>
 					<div class="col-xs-6 col-sm-3">
@@ -246,7 +251,7 @@
 					</div>
 					<div class="col-xs-6 col-sm-5">
 						<select name="symptoms" class="form-control">
-							<option value = "fever">fever</option>
+							<option value = "Paediatric">Paediatric</option>
 							<option value = "chest pain">chest pain</option>
 							<option value = "headache">headache</option>
 							<option value = "chillstoothache">chillstoothache</option>

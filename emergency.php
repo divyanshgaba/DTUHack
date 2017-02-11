@@ -80,7 +80,7 @@
 					  <li><a href="index.php">HOME</a></li>                                    
 					  <li><a href="search.php?">HOSPITALS</a></li>
 					  <li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
-					  <li><a href="emergency.php" >EMERGENCY</a></li>
+					  
 					  <li><a href="faq.php" >FAQ</a></li>
 					  <?php
 						if(empty($_SESSION['register']))
@@ -91,7 +91,7 @@
 						else
 						{
 						?>
-						<li><a href="Sign_out.php">LOGOUT</a></li> 
+						<li><a href="patientprofile.php">PROFILE</a></li> <li><a href="Sign_out.php">LOGOUT</a></li> 
 						<?php
 						}
 						?>							
@@ -125,7 +125,7 @@
 					<li><a href="index.php">HOME</a></li>                                    
 					<li><a href="search.php?">HOSPITALS</a></li>
 					<li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
-					<li><a href="emergency.php" >EMERGENCY</a></li>
+					
 					<li><a href="faq.php" >FAQ</a></li>
 					<?php
 						if(empty($_SESSION['register']))
@@ -136,7 +136,7 @@
 						else
 						{
 					?>
-						<li><a href="Sign_out.php">LOGOUT</a></li> 
+						<li><a href="patientprofile.php">PROFILE</a></li> <li><a href="Sign_out.php">LOGOUT</a></li> 
 					<?php
 						}
 					?>

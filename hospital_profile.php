@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php include 'conn.php';
+session_start();
+?>
+	
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -27,41 +31,80 @@
 <body>
 
   	<header id="header-wrap">
-		<section id="header">
-			<div class="logo-menu">
-				<nav class="navbar navbar-default navbar-plain" role="navigation" data-spy="affix" data-offset-top="50">
-					<div class="container">
+    <section id="header">
+          <div class="logo-menu">
+      <nav class="navbar navbar-default navbar-plain" role="navigation" data-spy="affix" data-offset-top="50">
+        <div class="container">
 
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-							</button>
-							<a class="navbar-brand" href="index.php">
-							  <h2>DIGITALISATION</h2>
-							</a>
-						</div>
-					
-						<div class="collapse navbar-collapse" id="navbar">
-							<ul class="nav navbar-nav animated-nav navbar-right">
-								<li><a href="hospital_panel.php">APPOINTMENTS</a></li>                                    
-								<li><a href="hospital_profile.php">PROFILE</a></li>
-								<li><a href="patient_details.php">PATIENT DETAILS</a></li>
-								<li><a href="Sign_out.php">LOGOUT</a></li> 
-								<li><a href="contactus.php">CONTACT US</a></li>
-							</ul>       
-						</div>
-					
-					</div>
+           <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+          </button>
+          <a class="navbar-brand" href="index.php">
+            <h2>DIGIHOPE</h2>
+          </a>
+          </div>
+        
+          <div class="collapse navbar-collapse" id="navbar">
+          <ul class="nav navbar-nav animated-nav navbar-right">
+          	                                
+            <li><a href="hospital_panel.php">Dashboard</a></li>                                    
+            <li><a href="hospital_profile.php">Profile</a></li>
 
-					<ul class="wpb-mobile-menu">
-						<li><a href="hospital_panel.php">APPOINTMENTS</a></li>                                    
-						<li><a href="hospital_profile.php">PROFILE</a></li>
-						<li><a href="patient_details.php">PATIENT DETAILS</a></li>
-						<li><a href="Sign_out.php">LOGOUT</a></li> 
-						<li><a href="contactus.php">CONTACT US</a></li>
-					</ul>
-				</nav>
-			</div>
-		</section>    
+            <?php
+            if(empty($_SESSION['register']))
+            {
+				?>
+            <li><a href="sign.php" >Sign In</a></li>
+            <?php
+            }
+            else if($_SESSION['register']=="hospital")
+            {
+            ?>
+            <li><a href="Sign_out.php">Sign Out</a></li> 
+            <?php
+            }
+            ?>              
+                
+                  
+                </ul>
+                
+                <!-- Form for navbar search area -->
+                
+                <!-- Search form ends -->
+          </ul>       
+          </div>
+        </div>
+
+        <ul class="wpb-mobile-menu">
+          <li><a href="index.php">HOME</a></li>                                    
+          <li><a href="search.php?">HOSPITALS</a></li>
+          <li><a href="appointment.php">Appointments</a></li>
+          <?php
+            if(empty($_SESSION['register']))
+          {?>
+            <li><a href="sign.php" >Sign In</a></li>
+          <?php
+            }
+            else
+            {
+          ?>
+            <li><a href="Sign_out.php">Sign Out</a></li> 
+          <?php
+            }
+          ?>
+          <li class="search">
+                    <a href="#" class="open-search">
+                      <i class="fa fa-search">Search
+                      </i>
+                    </a>
+                  </li>
+        </ul>
+        
+      </nav>
+        
+        </div>
+      
+      </section>    
     </header>
  
     <div class="page-header">
@@ -74,8 +117,8 @@
 		</div>
     </div>
 <?php
-	session_start();
-	$hid=$_SESSION['hospitalid'];;
+	
+	$hid=$_SESSION['hid'];;
 	include "conn.php";
 	$sql="select * from hospital where id = '$hid'";
 	$res=mysql_query($sql);
@@ -100,15 +143,6 @@
 						<?php
 						echo '<input class="form-control" name="email" id="author" value="'.$row["hospitalprimaryemailid"].'" type="email" placeholder="'.$row["hospitalprimaryemailid"].'" required />';
 						?>						
-					</div>
-				</div>
-								
-				<div class="form-group">
-					<div class="col-md-5">
-						<?php
-						echo '<input class="form-control" name="totalnumofbeds" id="author" value="5" type="text" placeholder="5"  required />';
-						?>
-						
 					</div>
 				</div>
 				

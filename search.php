@@ -1,36 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
 include 'assets/php/conn.php';
 include "assets/php/functions.php";
+	session_start();
 ?>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-     HOSPITAL
+		Hospitals
     </title>
+
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
     <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+
     <link rel="stylesheet" media="screen" href="assets/fonts/font-awesome/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/fonts/plain/plain-fonts.css">
     
      
     <link rel="stylesheet" type="text/css" href="assets/fonts/lovelo/lovelo.css">
+
     <link rel="stylesheet" type="text/css" href="assets/extras/owl/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="assets/extras/owl/owl.theme.css">
     <link rel="stylesheet" type="text/css" href="assets/extras/animate.css">
     <link rel="stylesheet" type="text/css" href="assets/extras/slicknav.css">
 
-
 	<link rel="stylesheet" type="text/css" href="assets/css/colors/orange.css" title="orange" media="screen" />
     <link rel="stylesheet" href="css/style.css">
-    
   </head>
-  <body>
+<body>
 
-    <header id="header-wrap">
+   	<header id="header-wrap">
 		<section id="header">
           <div class="logo-menu">
 			<nav class="navbar navbar-default navbar-plain" role="navigation" data-spy="affix" data-offset-top="50">
@@ -40,7 +44,7 @@ include "assets/php/functions.php";
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
 					</button>
 					<a class="navbar-brand" href="index.php">
-					  <h2>DIGITALISATION</h2>
+					  <h2>DIGIHOPE</h2>
 					</a>
 				  </div>
 				
@@ -48,24 +52,23 @@ include "assets/php/functions.php";
 					<ul class="nav navbar-nav animated-nav navbar-right">
 					  <li><a href="index.php">HOME</a></li>                                    
 					  <li><a href="search.php?">HOSPITALS</a></li>
-					  <li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
-					  <li><a href="emergency.php" >EMERGENCY</a></li>
-					  <li><a href="faq.php" >FAQ</a></li>
+					  <li><a href="appointment.php">Appointments</a></li>
+
 					  <?php
 						if(empty($_SESSION['register']))
 						{?>
-					  <li><a href="sign.php" >LOGIN</a></li>
+					  <li><a href="sign.php" >Sign In</a></li>
 					  <?php
 						}
 						else
 						{
 						?>
-						<li><a href="Sign_out.php">LOGOUT</a></li> 
+            <li><a href="patientprofile.php">Dashboard</a></li>
+						<li><a href="Sign_out.php">Sign Out</a></li> 
 						<?php
 						}
 						?>							
-					  <li><a href="contactus.php">CONTACT US</a></li> 
-					  <li class="search">
+					      <li class="search">
                     <a href="#" class="open-search">
                       <i class="fa fa-search">
                       </i>
@@ -93,24 +96,27 @@ include "assets/php/functions.php";
 				<ul class="wpb-mobile-menu">
 					<li><a href="index.php">HOME</a></li>                                    
 					<li><a href="search.php?">HOSPITALS</a></li>
-					<li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
-					<li><a href="emergency.php" >EMERGENCY</a></li>
-					<li><a href="faq.php" >FAQ</a></li>
-					
+					<li><a href="appointment.php">Appointments</a></li>
 					<?php
 						if(empty($_SESSION['register']))
 					{?>
-					  <li><a href="sign.php" >LOGIN</a></li>
+					  <li><a href="sign.php" >Sign In</a></li>
 					<?php
 						}
 						else
 						{
 					?>
-						<li><a href="Sign_out.php">LOGOUT</a></li> 
+            <li><a href="patientprofile.php">Dashboard</a></li>
+						<li><a href="Sign_out.php">Sign Out</a></li> 
 					<?php
 						}
 					?>
-					<li><a href="contactus.php">CONTACT US</a></li>
+          <li class="search">
+                    <a href="#" class="open-search">
+                      <i class="fa fa-search">Search
+                      </i>
+                    </a>
+                  </li>
 				</ul>
 				
 			</nav>
@@ -120,8 +126,7 @@ include "assets/php/functions.php";
       </section>    
     </header>
   
-  
-	<div class="container" style="margin:0 0 0 25%;width:1000px">
+<div class="container" style="margin:0 0 0 25%;width:1000px">
 	
 	<?php
 	 if (!isset($_GET["state"])or empty($_GET["state"])) 
@@ -287,6 +292,9 @@ if($start==0){$start=1;}
 		
 	  <?php
 
+	
+	
+
 	 if( mysql_num_rows($rest)>0)
 			{
 	   while($row=mysql_fetch_assoc($rest))
@@ -308,7 +316,7 @@ if($start==0){$start=1;}
 			
 			 
                <?php
-			   
+					$hid=$row['id'];
 					echo "<b>Address : </b>".$row["address_First_Line"].",",$row["district"].",".$row["state"]." - ".$row["pincode"]."";
 					echo "<br/><strong>Hospital Type : </strong>".$row["hospitalcategory"];
 					echo "<br/><b>Specialities : </b>".$row["specialties"]."";
@@ -317,15 +325,15 @@ if($start==0){$start=1;}
 					echo "<br/><b>Website : </b><a href=".$row["website"]." target=_blank >".cut_sentence($row["website"],30)."</a>"."";
 					echo "<br><b>Telephone : </b>".$row["telephone"]."";
 					echo "<br><b>Email ID : </b>".$row["hospitalprimaryemailid"]."";
-					if($row["totalnumofbeds"]=="NA")
-						echo "<br/><b>Beds Avalaible : </b>10";
-					else
-						echo "<br/><b>Beds Avalaible : </b>".$row["totalnumofbeds"]."";
-					 $count++
-			   ?>
+
+					 $count++;
+			   
+			   
               
-           
-          </div>
+					echo '<a href="sign.php"><button type="button" class="btn btn-common" style="float:right" onclick="f1('.$hid.')">Make an appointment</button></a>';
+			  
+		?>
+		  </div>
            </div>
           <br>
 
@@ -386,6 +394,24 @@ if($start==0){$start=1;}
     </script>
     <script src="assets/js/main.js">
     </script>
-    
+    <script>
+	function f1(hid)
+  {
+		 
+	  var xhttp=new XMLHttpRequest();
+	  xhttp.onreadystatechange=function()
+	  {
+		  if(xhttp.readyState==4 && xhttp.status==200)
+		  {
+			  document.getElementById("comment"+s_id).innerHTML=xhttp.responseText;
+			  
+		  }
+	  };
+	  xhttp.open("GET","session_start_hosp.php?h_id="+hid,true);
+	  xhttp.send();
+
+		  
+  }
+	</script>
   </body>
 </html>

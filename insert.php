@@ -1,12 +1,13 @@
 <?php
 	include "assets/php/conn.php";
+	session_start();
 	$name=$_POST['name'];
 	$email=$_POST['email'];
 	$gender=$_POST['gender'];
 	$dob=$_POST['dob'];
 	$phone=$_POST["phone"];
 	$itype=$_POST["identitytype"];
-	$ano=$_POST["identityvalue"];
+	$ival=$_POST["identityvalue"];
 	$password=md5($_POST["password"]);	
 	$pid=uniqid();
 	$sql1="select * from patient where email='$email'";
@@ -43,14 +44,15 @@
 	
 	if(($count==0)&&($count1==0)&&($count2==0))
 	{
-		$sql="INSERT INTO patient values('','$name','$phone','$itype','$ano','$pid','$password','$email','$email','$dob','$gender','','','')";
+		$sql="INSERT INTO patient values('','$name','$phone','$itype','$ival','$pid','$password','$email','$email','$dob','$gender','')";
 		$res=mysql_query($sql);
 		if(!$res)
 		{
 			die("PLEASE FILL THE DATA PROPERLY");
 		}
 		if($res)
-		{
+		{	$_SESSION['register']='patient';
+			$_SESSION['id']=$pid;
 			header('location:index.php');
 		}
 	}
