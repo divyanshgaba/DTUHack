@@ -1,7 +1,7 @@
 <?php
 include 'assets/php/conn.php';
 include "assets/php/functions.php";
-session_start();
+
 $name=$_POST["Name"];
 $email=$_POST["Email"];
 $phone=$_POST["phone"];
@@ -17,11 +17,13 @@ date_default_timezone_set("Asia/Kolkata");
 $time= date("h:i:sa");
 $date= date("d-m-Y ");
 $pass=md5($phone);
-$pid=$_SESSION["id"];
+$pid=uniqid();
 $type=$_GET['type'];
 
 if($lat!="") {
-   
+    $sql1="insert into appointment(pid,issue,discription,applicationtime,applicationdate) 
+		values('$pid','$symptoms','$comment','$time','$date')";
+    $res1=mysql_query($sql1);
 
     $url = sprintf("https://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s", $lat, $lng);
 
@@ -38,17 +40,13 @@ if($lat!="") {
        $add= $result['formatted_address'];
 
     }
-	 $sql1="insert into appointment(issue,discription,applicationtime,applicationdate,lati,longi,address,pid) 
-	 values('$symptoms','$comment','$time','$date','$lat','$lng','$add','$pid')";
-     $res1=mysql_query($sql1) or die("not working");
-	 $sql2="SELECT id FROM appointment ORDER BY id DESC";
-	 $res=mysql_query($sql2);
-	 $r=mysql_result($res,0);
-	//echo $r;
 
-if($res1){
-	
-	$_SESSION["tempid"]=$r;
+$sql="insert into patient(pid,name,phone,identitytype,identityvalue,password,userid,email,lat,lng,address,gender,dob) 
+	values('$pid','$name','$phone','$identitytype','$identityvalue','$pass','$email','$email','$lat','$lng','$add','$gender','$dob')";
+$res=mysql_query($sql);
+if($res){
+	session_start();
+	$_SESSION["logined"] = $pid;
 	$_SESSION["lat"] = $lat;
 	$_SESSION["lng"] = $lng;
 

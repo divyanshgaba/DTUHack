@@ -16,8 +16,7 @@
 		if($count==1)
 		{
 			$_SESSION['register']='patient';
-			$_SESSION['id']=$row['pid'];
-			$_SESSION["logined"]=$row['pid'];
+			$_SESSION['id']=$row['id'];
 			header('location:index.php');
 		}
 		else
@@ -34,7 +33,7 @@
 		if($count==1)
 		{
 			$_SESSION['register']="hospital";
-			$_SESSION['hid']=$row['id'];
+			$_SESSION['hospitalid']=$row['id'];
 			header('location:hospital_panel.php');
 		}
 		else

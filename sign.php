@@ -3,18 +3,14 @@
 <?php
 include 'assets/php/conn.php';
 include "assets/php/functions.php";
-session_start();
 
-if(!empty($_SESSION['id'])){
-	header("location:appointment.php");
-}
 
 ?>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-     Sign In
+     HOSPITAL
     </title>
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
@@ -57,43 +53,44 @@ if(!empty($_SESSION['id'])){
 	</script>
 
   </head>
- <body>
+ <body >
 
     <header id="header-wrap">
-    <section id="header">
+		<section id="header">
           <div class="logo-menu">
-      <nav class="navbar navbar-default navbar-plain" role="navigation" data-spy="affix" data-offset-top="50">
-        <div class="container">
+			<nav class="navbar navbar-default navbar-plain" role="navigation" data-spy="affix" data-offset-top="50">
+				<div class="container">
 
-           <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-          </button>
-          <a class="navbar-brand" href="index.php">
-            <h2>DIGIHOPE</h2>
-          </a>
-          </div>
-        
-          <div class="collapse navbar-collapse" id="navbar">
-          <ul class="nav navbar-nav animated-nav navbar-right">
-            <li><a href="index.php">HOME</a></li>                                    
-            <li><a href="search.php?">HOSPITALS</a></li>
-            <li><a href="appointment.php">Appointments</a></li>
-
-            <?php
-            if(empty($_SESSION['register']))
-            {?>
-            <li><a href="sign.php" >Sign In</a></li>
-            <?php
-            }
-            else
-            {
-            ?>
-            <li><a href="patientprofile.php">Dashboard</a></li>
-            <li><a href="Sign_out.php">Sign Out</a></li> 
-            <?php
-            }
-            ?>              
-                <li class="search">
+					 <div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+					</button>
+					<a class="navbar-brand" href="index.php">
+					  <h2>DIGITALISATION</h2>
+					</a>
+				  </div>
+				
+				  <div class="collapse navbar-collapse" id="navbar">
+					<ul class="nav navbar-nav animated-nav navbar-right">
+					  <li><a href="index.php">HOME</a></li>                                    
+					  <li><a href="search.php?">HOSPITALS</a></li>
+					  <li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
+					  <li><a href="emergency.php" >EMERGENCY</a></li>
+					  <li><a href="faq.php" >FAQ</a></li>
+					  <?php
+						if(empty($_SESSION['register']))
+						{?>
+					  <li><a href="sign.php" >LOGIN</a></li>
+					  <?php
+						}
+						else
+						{
+						?>
+						<li><a href="Sign_out.php">LOGOUT</a></li> 
+						<?php
+						}
+						?>							
+					  <li><a href="contactus.php">CONTACT US</a></li>
+                           <li class="search">
                     <a href="#" class="open-search">
                       <i class="fa fa-search">
                       </i>
@@ -113,39 +110,35 @@ if(!empty($_SESSION['id'])){
                     </a>
                   </div>
                 </form>
-                <!-- Search form ends -->
-          </ul>       
-          </div>
-        </div>
+                <!-- Search form ends -->					  
+					</ul>       
+				  </div>
+				</div>
 
-        <ul class="wpb-mobile-menu">
-          <li><a href="index.php">HOME</a></li>                                    
-          <li><a href="search.php?">HOSPITALS</a></li>
-          <li><a href="appointment.php">Appointments</a></li>
-          <?php
-            if(empty($_SESSION['register']))
-          {?>
-            <li><a href="sign.php" >Sign In</a></li>
-          <?php
-            }
-            else
-            {
-          ?>
-            <li><a href="patientprofile.php">Dashboard</a></li>
-            <li><a href="Sign_out.php">Sign Out</a></li> 
-          <?php
-            }
-          ?>
-          <li class="search">
-                    <a href="#" class="open-search">
-                      <i class="fa fa-search">Search
-                      </i>
-                    </a>
-                  </li>
-        </ul>
-        
-      </nav>
-        
+				<ul class="wpb-mobile-menu">
+					<li><a href="index.php">HOME</a></li>                                    
+					<li><a href="search.php?">HOSPITALS</a></li>
+					<li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
+					<li><a href="emergency.php" >EMERGENCY</a></li>
+					<li><a href="faq.php" >FAQ</a></li>
+					<?php
+						if(empty($_SESSION['register']))
+					{?>
+					  <li><a href="sign.php" >LOGIN</a></li>
+					<?php
+						}
+						else
+						{
+					?>
+						<li><a href="Sign_out.php">LOGOUT</a></li> 
+					<?php
+						}
+					?>
+					<li><a href="contactus.php">CONTACT US</a></li>
+				</ul>
+				
+			</nav>
+			  
         </div>
       
       </section>    
@@ -222,7 +215,6 @@ if(!empty($_SESSION['id'])){
  	<form name="frm" method="post" action="insert.php">
 			<h2>Please Sign Up <small>It's free and always will be.</small></h2>
 			<hr class="colorgraph">
-			
 			
 <?php
 	if(isset($_GET['emailinvalid'])?(int)$_GET['emailinvalid']:0){

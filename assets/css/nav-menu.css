@@ -1,0 +1,214 @@
+/*You can add your won color also */
+.navbar {
+  margin-bottom: 0;
+}
+.navbar li {
+  color: #666;
+}
+.navbar-plain.affix {
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+.navbar-plain.affix .navbar-brand {
+  padding: 10px 15px;
+  height: 54px;
+}
+.navbar-plain.affix .navbar-brand img {
+  width: 100px;
+}
+.navbar-plain.affix .navbar-nav > li > a,
+.navbar-plain.affix .navbar-nav > li > a:focus {
+  margin: 10px 20px;
+}
+.navbar-plain {
+  border: none;
+  border-radius: 0;
+  background: #fff;
+}
+.navbar-plain .navbar-brand {
+  width: 130px;
+  height: auto;
+}
+.navbar-plain .navbar-brand img {
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.navbar-plain .navbar-nav > li > a,
+.navbar-plain .navbar-nav > li > a:focus {
+  font-size: 14px;
+  padding: 5px 0;
+  margin: 20px;
+  outline: 0;
+  color: #666;
+  text-transform: uppercase;
+  font-weight: 400;
+  background: transparent;
+}
+.navbar-plain .navbar-nav > li > a {
+  background: transparent;
+  padding-bottom: 5px;
+  color: #666;
+  position: relative;
+}
+.navbar-plain .navbar-nav > li > a:before {
+  content: "";
+  display: inline-block;
+  width: 0px;
+  height: 1px;
+  position: absolute;
+  left: 1px;
+  bottom: 4px;
+  -webkit-transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1) 0s;
+  -moz-transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1) 0s;
+  -o-transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1) 0s;
+  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1) 0s;
+}
+.navbar-plain .navbar-nav > li a:hover::before,
+.navbar-plain .navbar-nav > li.active a::before,
+.navbar-plain .navbar-nav > li.open > a::before,
+.navbar-plain .navbar-nav > .active > a:focus::before {
+  width: 15px;
+}
+.navbar-plain .navbar-nav > li a:focus > a::before {
+  background: transparent;
+}
+.navbar-plain .navbar-nav > li.open a:focus {
+  background: transparent!important;
+}
+.navbar-plain .navbar-nav > li > a:hover,
+.navbar-plain .navbar-nav > .active > a,
+.navbar-plain .navbar-nav > li.open > a,
+.navbar-plain .navbar-nav > .active > a:hover,
+.navbar-plain .navbar-nav > .active > a:focus,
+.navbar-plain .navbar-nav > .open > a:hover {
+  background: transparent;
+}
+.navbar-plain .navbar-nav > .dropdown:hover > ul.dropdown-menu {
+  display: block;
+  -webkit-animation: fadeInUpMenu 0.4s;
+  -moz-animation: fadeInUpMenu 0.4s;
+  -ms-animation: fadeInUpMenu 0.4s;
+  -o-animation: fadeInUpMenu 0.4s;
+  animation: fadeInUpMenu 0.4s;
+}
+.navbar-plain .dropdown .dropdown-menu {
+  padding: 0;
+  border-style: solid;
+  border-width: 4px 0 0 0;
+  border-radius: 0;
+  left: 0;
+  right: 0;
+}
+.navbar-plain .dropdown .dropdown-menu > li > a {
+  color: #666;
+  padding: 10px 0 10px 15px;
+  margin: 5px 0;
+}
+.navbar-plain .dropdown .dropdown-menu > li > a:hover,
+.navbar-plain .dropdown .dropdown-menu > li > a .active {
+  background: #ecf0f1;
+}
+.navbar-plain .dropdown .dropdown-menu > li.active > a {
+  background: #ecf0f1;
+}
+.navbar-plain .dropdown .sub-menu {
+  top: -1px;
+  left: 100% !important;
+  padding: 0;
+  border: none;
+  -webkit-animation: fadeInUpMenu 0.4s;
+  -moz-animation: fadeInUpMenu 0.4s;
+  -ms-animation: fadeInUpMenu 0.4s;
+  -o-animation: fadeInUpMenu 0.4s;
+  animation: fadeInUpMenu 0.4s;
+}
+.navbar-plain .navbar-toggle {
+  border-radius: 0;
+}
+.navbar-plain .navbar-toggle:hover .icon-bar {
+  background: #fff;
+}
+@-webkit-keyframes fadeInUpMenu {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+@keyframes fadeInUpMenu {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fadeInUpMenu {
+  -webkit-animation-name: fadeInUpMenu;
+  animation-name: fadeInUpMenu;
+}
+.active.slicknav_collapsed,
+.slicknav_parent.slicknav_open {
+  background: #eee;
+}
+.wpb-mobile-menu {
+  display: none;
+}
+ul li > ul {
+  padding: 0;
+  border-style: solid;
+  border-width: 4px 0 0 0;
+  border-radius: 0;
+  left: 0;
+  right: 0;
+  border-color: transparent;
+}
+ul li > ul > li > a {
+  color: #666;
+  padding: 10px 0 10px 15px;
+  margin: 5px 0;
+}
+ul li > ul > li > a:hover,
+ul li > ul > li > a .active {
+  background: #ecf0f1;
+}
+ul li > ul > li.active > a {
+  background: #ecf0f1;
+}
+.slicknav_menu {
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  .navbar-brand {
+    position: absolute;
+    top: 0;
+  }
+  /* #menu is the original menu */
+  #wpb-mobile-menu {
+    display: none;
+  }
+  .slicknav_menu {
+    display: block;
+  }
+}
+/* SlickMenu responsive */
+@media screen and (max-width: 768px) {
+  .navbar-toggle {
+    display: none;
+  }
+}

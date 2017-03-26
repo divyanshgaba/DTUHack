@@ -1,0 +1,122 @@
+/*You can add your won color also */
+#pricing-block-1 {
+  background: #ecf0f1;
+}
+.pricing-table-1 {
+  background: #fff;
+  margin: 0 15px;
+}
+.pricing-table-1 .table-header {
+  padding: 30px 0;
+  color: #fff;
+  background: #e74c3c;
+}
+.pricing-table-1 .table-header h3 {
+  font-family: loveloblack;
+  font-size: 30px;
+}
+.pricing-table-1 .plan {
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(189, 195, 199, 0.5);
+}
+.pricing-table-1 .plan .price {
+  font-size: 60px;
+  font-family: loveloblack;
+}
+.pricing-table-1 .plan .period {
+  font-size: 18px;
+  color: #999;
+  text-transform: uppercase;
+}
+.pricing-table-1 .plan-info {
+  margin-top: 30px;
+}
+.pricing-table-1 .plan-info p {
+  color: #bdc3c7;
+  font-size: 16px;
+  line-height: 30px;
+}
+.pricing-table-1 .button-area {
+  padding: 30px 0 45px 0;
+}
+#pricing-block-x {
+  background: #ecf0f1;
+}
+.pricing-table-x {
+  background: #fff;
+  margin: 0 15px;
+}
+.pricing-table-x .table-header {
+  padding: 15px 0;
+  color: #fff;
+  background: url(../img/others/pricing-x-bg.jpg);
+}
+.pricing-table-x .table-header h3 {
+  font-size: 30px;
+}
+.pricing-table-x .table-header.highlight {
+  background: url(../img/others/pricing-x-bg-highlight.jpg);
+}
+.pricing-table-x .plan {
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(189, 195, 199, 0.5);
+}
+.pricing-table-x .plan .price {
+  font-size: 60px;
+  font-family: loveloblack;
+  color: #e74c3c;
+}
+.pricing-table-x .plan .period {
+  font-size: 18px;
+  color: rgba(231, 76, 60, 0.7);
+  text-transform: uppercase;
+}
+.pricing-table-x .plan-info {
+  margin-top: 30px;
+}
+.pricing-table-x .plan-info p {
+  color: #bdc3c7;
+  font-size: 16px;
+  line-height: 30px;
+}
+.pricing-table-x .button-area {
+  padding: 30px 0 45px 0;
+}
+#pricing-block-2 {
+  background: #e74c3c;
+  color: #fff;
+}
+#pricing-block-2 .section-title:before {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.pricing-table-2 {
+  background: rgba(255, 255, 255, 0.11);
+  padding: 30px 0;
+  text-transform: uppercase;
+}
+.pricing-table-2 .period {
+  position: relative;
+  letter-spacing: 5px;
+}
+.pricing-table-2 .period:before {
+  position: absolute;
+  content: " ";
+  width: 30px;
+  bottom: -5px;
+  margin-left: 0;
+  margin-right: 0;
+  border-bottom: 2px solid #fff;
+}
+.pricing-table-2 .price {
+  font-size: 90px;
+  font-family: loveloblack;
+}
+.pricing-table-2 .price span {
+  position: absolute;
+  font-size: 24px;
+  margin-left: -30px;
+}
+.pricing-table-2 p {
+  color: rgba(255, 255, 255, 0.5);
+  padding-bottom: 20px;
+}

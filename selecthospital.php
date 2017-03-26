@@ -36,16 +36,9 @@
   </head>
   
   <body>
-     <?php
-  if(!empty($_SESSION['h_id'])){
-		$pid=$_SESSION['id'];
-		$hid=$_SESSION['h_id'];
-		unset($_SESSION['h_id']);
-	  $sql="select * from hospital where id='$hid'";
-        $res=mysql_query($sql);
-		$row=mysql_fetch_array($res);
-		?>
-		<header id="header-wrap">
+    
+	
+ 	<header id="header-wrap">
 		<section id="header">
           <div class="logo-menu">
 			<nav class="navbar navbar-default navbar-plain" role="navigation" data-spy="affix" data-offset-top="50">
@@ -64,7 +57,7 @@
 					  <li><a href="index.php">HOME</a></li>                                    
 					  <li><a href="search.php?">HOSPITALS</a></li>
 					  <li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
-					  
+					  <li><a href="emergency.php" >EMERGENCY</a></li>
 					  <li><a href="faq.php" >FAQ</a></li>
 					  <?php
 						if(empty($_SESSION['register']))
@@ -75,7 +68,7 @@
 						else
 						{
 						?>
-						<li><a href="patientprofile.php">PROFILE</a></li> <li><a href="Sign_out.php">LOGOUT</a></li> 
+						<li><a href="Sign_out.php">LOGOUT</a></li> 
 						<?php
 						}
 						?>							
@@ -109,7 +102,7 @@
 					<li><a href="index.php">HOME</a></li>                                    
 					<li><a href="search.php?">HOSPITALS</a></li>
 					<li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
-					
+					<li><a href="emergency.php" >EMERGENCY</a></li>
 					<li><a href="faq.php" >FAQ</a></li>
 					<?php
 						if(empty($_SESSION['register']))
@@ -120,7 +113,7 @@
 						else
 						{
 					?>
-						<li><a href="patientprofile.php">PROFILE</a></li> <li><a href="Sign_out.php">LOGOUT</a></li> 
+						<li><a href="Sign_out.php">LOGOUT</a></li> 
 					<?php
 						}
 					?>
@@ -134,7 +127,37 @@
       </section>    
     </header>
   
-		 <div class="col-md-8">
+    <!-- Blog-page Section -->
+    <section id="blog-page">
+      <div class="container">
+        <div class="row">
+          <!-- Sidebar Start -->
+         
+          
+          <div class="col-md-12">
+            <div id="comments" class="havecomments">
+              <h3>
+               Select your Hospital
+              </h3>
+
+              <ol class="commentlist">
+			  
+			  <?php 
+		$pid= $_SESSION["logined"] ;
+	//	$sql1="select * from patient where pid='$pid'";
+      //  $res1=mysql_query($sql1);
+	//	while($row1=mysql_fetch_assoc($res1))
+		//{$padd=$row1["address"];}
+	
+        $sql="select * from hospital where state='delhi' order by id asc limit 10";
+        $res=mysql_query($sql);
+
+	   
+        while($row=mysql_fetch_assoc($res))
+        {
+			 
+			  ?>
+				 <div class="col-md-8">
                 <li class="comment">
                   <article class="clearfix comment-container">
                     
@@ -184,186 +207,6 @@
 			</ol>
 			</div>
 			</div>	
-				
-		
-		
-		
-	
-		<?php
-	}
-	else{
-		
-  ?>
-	
- 	<header id="header-wrap">
-		<section id="header">
-          <div class="logo-menu">
-			<nav class="navbar navbar-default navbar-plain" role="navigation" data-spy="affix" data-offset-top="50">
-				<div class="container">
-
-					 <div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-					</button>
-					<a class="navbar-brand" href="index.php">
-					  <h2>DIGITALISATION</h2>
-					</a>
-				  </div>
-				
-				  <div class="collapse navbar-collapse" id="navbar">
-					<ul class="nav navbar-nav animated-nav navbar-right">
-					  <li><a href="index.php">HOME</a></li>                                    
-					  <li><a href="search.php?">HOSPITALS</a></li>
-					  <li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
-					  
-					  <li><a href="faq.php" >FAQ</a></li>
-					  <?php
-						if(empty($_SESSION['register']))
-						{?>
-					  <li><a href="sign.php" >LOGIN</a></li>
-					  <?php
-						}
-						else
-						{
-						?>
-						<li><a href="patientprofile.php">PROFILE</a></li> <li><a href="Sign_out.php">LOGOUT</a></li> 
-						<?php
-						}
-						?>							
-					  <li><a href="contactus.php">CONTACT US</a></li>
-					      <li class="search">
-                    <a href="#" class="open-search">
-                      <i class="fa fa-search">
-                      </i>
-                    </a>
-                  </li>
-                  <!-- Search Ends -->
-                  
-                </ul>
-                
-                <!-- Form for navbar search area -->
-                <form class="full-search" action="search.php" action="get">
-                  <div class="container">
-                    <input type="text" placeholder="Type to Search Hospital" name="search">
-                    <a href="#" class="close-search">
-                      <span class="fa fa-times fa-2x">
-                      </span>
-                    </a>
-                  </div>
-                </form>
-                <!-- Search form ends -->
-					</ul>       
-				  </div>
-				</div>
-
-				<ul class="wpb-mobile-menu">
-					<li><a href="index.php">HOME</a></li>                                    
-					<li><a href="search.php?">HOSPITALS</a></li>
-					<li><a href="appointment.php">MAKE AN APPOINTMENT</a></li>
-					
-					<li><a href="faq.php" >FAQ</a></li>
-					<?php
-						if(empty($_SESSION['register']))
-					{?>
-					  <li><a href="sign.php" >LOGIN</a></li>
-					<?php
-						}
-						else
-						{
-					?>
-						<li><a href="patientprofile.php">PROFILE</a></li> <li><a href="Sign_out.php">LOGOUT</a></li> 
-					<?php
-						}
-					?>
-					<li><a href="contactus.php">CONTACT US</a></li>
-				</ul>
-				
-			</nav>
-			  
-        </div>
-      
-      </section>    
-    </header>
-  
-    <!-- Blog-page Section -->
-    <section id="blog-page">
-      <div class="container">
-        <div class="row">
-          <!-- Sidebar Start -->
-         
-          
-          <div class="col-md-12">
-            <div id="comments" class="havecomments">
-              <h3>
-               Select your Hospital
-              </h3>
-
-              <ol class="commentlist">
-			  
-			  <?php 
-		$pid= $_SESSION["id"] ;
-			//	$sql1="select * from patient where pid='$pid'";
-      //  $res1=mysql_query($sql1);
-	//	while($row1=mysql_fetch_assoc($res1))
-		//{$padd=$row1["address"];}
-		$issue=user_current_addr($_SESSION["tempid"])["issue"];
-        $sql="select * from hospital where state like '%delhi%' and (specialties like '%$issue%' or name like '%issue%') order by id asc limit 50";
-        $res=mysql_query($sql);
-
-	   
-        while($row=mysql_fetch_assoc($res))
-        {
-			 
-			  ?>
-				 <div class="col-md-8">
-                <li class="comment">
-                  <article class="clearfix comment-container">
-                    
-					<form method="post" action="finalemergency.php">
-					
-                    <div class="comment-content">
-                      <div class="fn"><a href="#"><h4><?php echo $row["name"];?></h4></a></div>
-                      
-                      <section class="comment_content clearfix">
-                        <p> <b>Address:</b><?php echo $row["address_First_Line"].",".$row["district"];?></p>
-					    <p> <b>Hospital Category:</b><?php echo $row["hospitalcategory"];?></p>
-						<p> <b>Medicine type:</b><?php echo $row["medi"];?></p>
-					    <p> <b>Specialties:</b><?php echo $row["specialties"];?></p>
-					<?php
-					$origin=user_current_addr($_SESSION["tempid"])["address"];
-                    $destination=$row["name"].",".$row["address_First_Line"].",".$row["district"];
-?>
-
-					     <p> <b>distance and time:</b><?php distancematrix($origin,$destination);?></p>
-                      </section>
-					  
-                      <input type="hidden" name="hospital" value="<?php echo $row["id"];?>"/>
-                      
-                      <button type="submit" class="comment-reply-link btn btn-danger btn-sm">Select</button>
-					 
-                    </div>
-                    <!-- END comment-content -->
-                 
-				  <br>
-                
-                </form>
-				 </article>
-				 </li>
-				 </div>
-				 <div class="col-md-4">
-            <div id="comments" class="havecomments">
-			
-			<ol class="commentlist">
-			<li class="comment">
-			<iframe
-  width="100%";
-  height="250px"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAbd318t5kTkd5tBcqCxISXCeWRSdcL-sI&origin=<?php echo $origin;?>&destination=<?php echo $row["name"].",".$row["pincode"];?>,&avoid=tolls|highways">
-</iframe>
-			</li>
-			</ol>
-			</div>
-			</div>	
 				 
        <?php 
 
@@ -379,10 +222,8 @@
         </div>
       </div>
     </section>
-	</div>
     <!-- Blog-page Section End -->
     
-	<?php }?>
    	<footer>
     
 	  <div id="copyright">
@@ -456,8 +297,7 @@
     <script src="assets/js/main.js">
     </script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbd318t5kTkd5tBcqCxISXCeWRSdcL-sI&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
-	
+  
   </body>
 </html>
-	
   

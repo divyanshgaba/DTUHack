@@ -1,0 +1,25 @@
+#project {
+  width: 100%;
+  background: #F4F4F4;
+}
+#project .section-title {
+  text-align: left;
+}
+#project ul.social-icons-fill.light {
+  padding-bottom: 30px;
+}
+#project .project-images {
+  padding-bottom: 30px;
+}
+#project .project-details {
+  background: #ecf0f1;
+  padding: 12px 24px;
+}
+#project .project-details h3 {
+  color: #83868B;
+  font-weight: 700;
+}
+#project .project-details p {
+  color: #968F89;
+  font-weight: 300;
+}

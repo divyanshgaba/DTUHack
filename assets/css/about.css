@@ -1,0 +1,178 @@
+/*You can add your won color also */
+/* About Us Start */
+#aboutus {
+  background: #fff;
+}
+.the-company h2 {
+  color: #e74c3c;
+}
+.the-company p {
+  font-size: 14px;
+  line-height: 25px;
+}
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em;
+}
+.skill-wrapper {
+  text-align: center;
+}
+.skill-wrapper .progress {
+  height: 30px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  background-color: #ecf0f1;
+  border: 0px;
+  border-radius: 30px;
+}
+.skill-wrapper .progress .progress-bar {
+  background-color: #e74c3c;
+  z-index: 0;
+  position: relative;
+  -webkit-transition: width 0.6s ease;
+  -moz-transition: width 0.6s ease;
+  -o-transition: width 0.6s ease;
+  -ms-transition: width 0.6s ease;
+  transition: width 0.6s ease;
+  border-radius: 30px;
+}
+.skill-wrapper .progress .percent {
+  line-height: 30px;
+  padding-left: 5px;
+  font-weight: 400;
+  color: #e74c3c;
+  font-size: 16px;
+}
+.skill-wrapper p {
+  color: #FFF;
+  font-size: 16px;
+  letter-spacing: 1px;
+  line-height: 30px;
+  padding-left: 30px;
+  text-align: left;
+}
+#why-choose {
+  background: url(../img/backgrounds/why-choose-bg.jpg);
+  background-size: cover;
+  color: #fff;
+}
+#why-choose .item {
+  float: left;
+  position: relative;
+  padding-left: 118px;
+  margin-top: 30px;
+  padding-bottom: 20px;
+}
+#why-choose .item p {
+  color: rgba(255, 255, 255, 0.5);
+}
+#why-choose .icon {
+  width: 90px;
+  height: 90px;
+  background: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  left: 0;
+  top: 30px;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border: 2px solid #fff;
+}
+#why-choose .icon i {
+  font-size: 48px;
+  line-height: 90px;
+  color: #E74C3C;
+}
+#why-choose h2 {
+  font-size: 18px;
+}
+#why-choose .item:hover .icon {
+  background: #ffffff;
+}
+#why-choose .tab-container {
+  z-index: 10;
+  padding: 0 !important;
+}
+#why-choose .tab-container h2 {
+  font-size: 30px;
+  line-height: 33px;
+  color: #e74c3c;
+  margin: 10px;
+}
+#why-choose .why-point {
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.5);
+}
+#why-choose .tab-menu {
+  padding-right: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+#why-choose .tab-menu .list-group {
+  margin-bottom: 0;
+}
+#why-choose .tab-menu .list-group > a {
+  color: #fff;
+  margin-bottom: 45px;
+  background: transparent;
+  font-size: 16px;
+  font-family: lane_-_narrowregular;
+}
+#why-choose .tab-menu .list-group > a:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+#why-choose .tab-menu .list-group > a.active {
+  color: #ffffff;
+  background: #e74c3c;
+  border-color: transparent;
+}
+#why-choose .list-group-item {
+  border: 2px solid #fff;
+}
+#why-choose .tab .tab-content:not(.active) {
+  display: none;
+}
+#why-choose .list-group-item:first-child,
+#why-choose .list-group-item:last-child {
+  border-radius: 0;
+}
+#why-choose .list-group-item:last-child {
+  margin-bottom: 0;
+}
+/* custom carousel */
+.custom-carousel {
+  position: relative;
+}
+.custom-carousel .owl-theme .owl-controls .owl-buttons div {
+  position: absolute;
+  height: 30px;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 0 !important;
+  width: 30px;
+  margin: 0 !important;
+  text-align: center;
+}
+.custom-carousel .owl-theme .owl-controls .owl-buttons div i {
+  color: #666;
+}
+.custom-carousel div.owl-buttons > div:hover {
+  background: #ffffff;
+}
+.custom-carousel div.owl-buttons > .owl-prev {
+  left: 0;
+}
+.custom-carousel div.owl-buttons > .owl-next {
+  right: 0;
+}
+#cool-facts .wrapper {
+  margin-top: 30px;
+}
+#cool-facts .wrapper h2 {
+  color: #ffffff;
+}

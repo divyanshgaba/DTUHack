@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-    Home
+		Home
     </title>
 
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
@@ -30,46 +30,46 @@
     <link rel="stylesheet" type="text/css" href="assets/extras/animate.css">
     <link rel="stylesheet" type="text/css" href="assets/extras/slicknav.css">
 
-  <link rel="stylesheet" type="text/css" href="assets/css/colors/orange.css" title="orange" media="screen" />
+	<link rel="stylesheet" type="text/css" href="assets/css/colors/orange.css" title="orange" media="screen" />
     <link rel="stylesheet" href="css/style.css">
   </head>
 <body>
 
-    <header id="header-wrap">
-    <section id="header">
+   	<header id="header-wrap">
+		<section id="header">
           <div class="logo-menu">
-      <nav class="navbar navbar-default navbar-plain" role="navigation" data-spy="affix" data-offset-top="50">
-        <div class="container">
+			<nav class="navbar navbar-default navbar-plain" role="navigation" data-spy="affix" data-offset-top="50">
+				<div class="container">
 
-           <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-          </button>
-          <a class="navbar-brand" href="index.php">
-            <h2>DIGIHOPE</h2>
-          </a>
-          </div>
-        
-          <div class="collapse navbar-collapse" id="navbar">
-          <ul class="nav navbar-nav animated-nav navbar-right">
-            <li><a href="index.php">HOME</a></li>                                    
-            <li><a href="search.php?">HOSPITALS</a></li>
-            <li><a href="appointment.php">Appointments</a></li>
+					 <div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+					</button>
+					<a class="navbar-brand" href="index.php">
+					  <h2>DIGIHOPE</h2>
+					</a>
+				  </div>
+				
+				  <div class="collapse navbar-collapse" id="navbar">
+					<ul class="nav navbar-nav animated-nav navbar-right">
+					  <li><a href="index.php">HOME</a></li>                                    
+					  <li><a href="search.php?">HOSPITALS</a></li>
+					  <li><a href="appointment.php">Appointments</a></li>
 
-            <?php
-            if(empty($_SESSION['register']))
-            {?>
-            <li><a href="sign.php" >Sign In</a></li>
-            <?php
-            }
-            else
-            {
-            ?>
+					  <?php
+						if(empty($_SESSION['register']))
+						{?>
+					  <li><a href="sign.php" >Sign In</a></li>
+					  <?php
+						}
+						else
+						{
+						?>
             <li><a href="patientprofile.php">Dashboard</a></li>
-            <li><a href="Sign_out.php">Sign Out</a></li> 
-            <?php
-            }
-            ?>              
-                <li class="search">
+						<li><a href="Sign_out.php">Sign Out</a></li> 
+						<?php
+						}
+						?>							
+					      <li class="search">
                     <a href="#" class="open-search">
                       <i class="fa fa-search">
                       </i>
@@ -90,40 +90,39 @@
                   </div>
                 </form>
                 <!-- Search form ends -->
-          </ul>       
-          </div>
-        </div>
+					</ul>       
+				  </div>
+				</div>
 
-        <ul class="wpb-mobile-menu">
-          <li><a href="index.php">HOME</a></li>                                    
-          <li><a href="search.php?">HOSPITALS</a></li>
-          <li><a href="appointment.php">Appointments</a></li>
-          <?php
-            if(empty($_SESSION['register']))
-          {?>
-            <li><a href="sign.php" >Sign In</a></li>
-          <?php
-            }
-            else
-            {
-          ?>
+				<ul class="wpb-mobile-menu">
+					<li><a href="index.php">HOME</a></li>                                    
+					<li><a href="search.php?">HOSPITALS</a></li>
+					<li><a href="appointment.php">Appointments</a></li>
+					<?php
+						if(empty($_SESSION['register']))
+					{?>
+					  <li><a href="sign.php" >Sign In</a></li>
+					<?php
+						}
+						else
+						{
+					?>
             <li><a href="patientprofile.php">Dashboard</a></li>
-            <li><a href="Sign_out.php">Sign Out</a></li> 
-          <?php
-            }
-          ?>
+						<li><a href="Sign_out.php">Sign Out</a></li> 
+					<?php
+						}
+					?>
           <li class="search">
                     <a href="#" class="open-search">
                       <i class="fa fa-search">Search
                       </i>
                     </a>
                   </li>
-        </ul>
-        
-      </nav>
-        
+				</ul>
+				
+			</nav>
+			  
         </div>
-    
 		
 		<div id="carousel-area">
           <div id="carousel-slider" class="carousel slide" data-interval="3000">
@@ -363,8 +362,10 @@
           <div class="row">
             <div class="col-md-9 col-sm-6">
               <p class="copyright-text">
-                DIGITAL HOSPITAL <br>
+                DigiHope was developed by Team MTRON in DTUHack organised by SDDTU at Synergy'17 <br>
 				<a href="contactus.php">CONTACT US</a>
+        <br>
+        <a href="faq.php">FAQ</a>
               </p>
             </div>
             </div>

@@ -1,0 +1,243 @@
+#tabs{
+
+	img{
+		max-width: 100%;
+		display: block;
+		height: auto;
+	}
+	a:focus,a:active{
+		outline: none;
+	}
+	.owl-controls .owl-pagination{
+		position: absolute;
+		bottom: 25px;
+		text-align: center;
+		margin: 0px auto;
+		display: block;
+		width: 100%;
+	}
+	.owl-controls .owl-page span{
+		display: block;
+		width: 36px;
+		height: 8px;
+		margin: 5px 4px;
+		background: #E84C3D;
+	}
+	h1.section-title{
+		text-align: left;
+		margin: 38px 0;
+		padding: 0;
+		font-size: 38px;
+		&:before{
+			bottom: -4px;
+		}
+	}
+	h2{
+		font-size: 28px;
+		margin-bottom: 15px;
+	}
+	.nav-tabs{
+		box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.04) inset;
+		border-bottom: 1px solid #f0f0f0;
+		margin-top: 15px;
+		li{
+			float: left;
+			margin-bottom: -1px;
+			a{
+				font-size: 14px;
+				text-transform: uppercase;
+				border-radius: 0px;
+				padding: 12px 25px;
+				display: block;
+				position: relative;
+				i{
+					padding-right: 5px;
+				}
+			}
+		}
+		li.active a,
+		li.active a:hover,
+		li.active a:focus,
+		li a:hover{
+			color: #666;
+			background: #FAFAFA;
+			border-width: 1px;
+			border-style: solid;
+			outline: none;
+			border-color: #f0f0f0 #f0f0f0 transparent;
+			box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.04);
+		}
+	}
+	.tab-content{
+		background-color: #fafafa;
+		padding: 30px;
+		margin-bottom: 60px;
+		border: 1px solid #f0f0f0;
+		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.04);
+		h1{
+			font-size: 34px;
+			font-weight: 700;
+			padding-bottom: 20px;
+		}
+		.list-icons{
+			li{
+				padding: 5px 0px;
+				i{
+					width: 25px;
+					text-align: center;;
+					padding-right: 10px;
+				}
+			}
+		}
+		p{
+			margin-bottom: 20px;
+		}
+		.btn-common{
+			margin: 10px 12px;
+		}
+	}
+	.tabs-style-2{
+		.nav-tabs{
+			border-bottom: 1px solid #e84c3d;
+			li.active a,
+			li.active a:hover,
+			li.active a:focus,
+			li a:hover{
+				border: 1px solid #e84c3d;
+				color: #ffffff;
+				background-color: #E84C3D;
+			}
+		}
+	}
+	.vertical{
+		margin: 20px 0;
+		.nav-tabs,
+		.tab-content{
+			display: table-cell;
+			margin: 0;
+			vertical-align: top;
+		}
+		.nav-tabs{
+			background-color: #999;
+			box-shadow: none;
+			border-bottom-color: transparent;
+			li{
+				float: none;
+				a{
+					margin: 0px;
+					padding: 15px 40px;
+					white-space: nowrap;
+					color: #ffffff;
+					border-bottom: 1px solid #8f8f8f;
+				}
+			}
+			li.active a,
+			li.active a:hover,
+			li.active a:focus,
+			li a:hover{
+				color: #666;
+				width: 101%;
+				box-shadow: -1px 0px 1px rgba(0, 0, 0, 0.04);
+				border-right-color: transparent;
+				border-bottom-color: #f0f0f0;
+				z-index: 2;
+			}
+		}
+		.btn-common{
+			margin: 10px 0px;
+		}
+	}
+	.pills{
+		.nav-pills{
+			li{
+				a{
+					border-radius: 0px;
+					padding: 10px 15px;
+					border: 1px solid transparent;
+					color: #666;
+					font-size: 14px;
+					text-transform: uppercase;
+					font-weight: 700;
+					i{
+						padding-right: 5px;
+					}
+				}
+			}
+			li.active a,
+			li.active a:hover,
+			li.active a:focus,
+			li a:hover,
+			li a:focus{
+				border: 1px solid #f3f3f3;
+				color: #E84C3D;
+				background-color: #FAFAFA;
+			}
+		}
+		.tab-content.clear-style{
+			border: none;
+			padding: 10px 0px 0px;
+			box-shadow: none;
+			background-color: transparent;
+		}
+		.overlay-container{
+			position: relative;
+			display: block;
+			overflow: hidden;
+			.overlay{
+				background-color: rgba(0, 0, 0, 0.8);
+				position: absolute;
+				cursor: pointer;
+				top: 0px;
+				bottom: -1px;
+				left: 0px;
+				right: -1px;
+				overflow: hidden;
+				opacity: 0;
+				-webkit-transition: all 0.2s linear;
+				-moz-transition: all 0.2s linear;
+				-ms-transition: all 0.2s linear;
+				-mo-transition: all 0.2s linear;
+				transition: all 0.2s linear;
+			}
+			i{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				font-size: 40px;
+				letter-spacing: 42px;
+				color: #E84C3D;
+				margin-top: -22px;
+				margin-left: -18px;
+				text-align: center;
+			}
+		}
+		.overlay-container:hover .overlay{
+			opacity: 1;
+		}
+	}
+	h3{
+		font-weight: 700;
+	}
+}
+.sidebar{
+		.nav-pills{
+			li{
+				a{
+					border-radius: 0px;
+					padding: 10px 15px;
+					color: #666;
+					font-weight: 700;
+					text-transform: uppercase;
+					border: 1px solid transparent;
+				}
+			}
+			li.active a,
+			li.active a:hover,
+			li.active a:focus,
+			li a:hover{
+				border: 1px solid #f3f3f3;
+				color: #e84c3d;
+				background-color: #fafafa;
+			}
+		}
+	}

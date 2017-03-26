@@ -52,8 +52,8 @@ session_start();
 					<ul class="nav navbar-nav animated-nav navbar-right">
 					<li><a href="hospital_panel.php">APPOINTMENTS</a></li>                                    
 					<li><a href="hospital_profile.php">PROFILE</a></li>
-					
-					<li><a href="patientprofile.php">PROFILE</a></li> <li><a href="Sign_out.php">LOGOUT</a></li> 
+					<li><a href="patient_details.php">PATIENT DETAILS</a></li>
+					<li><a href="Sign_out.php">LOGOUT</a></li> 
 					<li><a href="contactus.php">CONTACT US</a></li>
 				</ul>       
 				  </div>
@@ -62,8 +62,8 @@ session_start();
 				<ul class="wpb-mobile-menu">
 					<li><a href="hospital_panel.php">APPOINTMENTS</a></li>                                    
 					<li><a href="hospital_profile.php">PROFILE</a></li>
-					
-					<li><a href="patientprofile.php">PROFILE</a></li> <li><a href="Sign_out.php">LOGOUT</a></li> 
+					<li><a href="patient_details.php">PATIENT DETAILS</a></li>
+					<li><a href="Sign_out.php">LOGOUT</a></li> 
 					<li><a href="contactus.php">CONTACT US</a></li>
 				</ul>
 				

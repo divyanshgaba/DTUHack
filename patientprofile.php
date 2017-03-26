@@ -8,10 +8,6 @@ session_start();
 {
 	header('location:index.php');
 }*/
-if(empty($_SESSION["id"]))
-{
-	header("location:sign.php");
-}
 
 ?>
   <head>
@@ -58,7 +54,7 @@ if(empty($_SESSION["id"]))
 					<ul class="nav navbar-nav animated-nav navbar-right">
 					<li><a href="hospital_panel.php">APPOINTMENTS</a></li>                                    
 					<li><a href="hospital_profile.php">PROFILE</a></li>
-					
+					<li><a href="patient_details.php">PATIENT DETAILS</a></li>
 					<li><a href="Sign_out.php">LOGOUT</a></li> 
 					<li><a href="contactus.php">CONTACT US</a></li>
 				</ul>       
@@ -68,7 +64,7 @@ if(empty($_SESSION["id"]))
 				<ul class="wpb-mobile-menu">
 					<li><a href="hospital_panel.php">APPOINTMENTS</a></li>                                    
 					<li><a href="hospital_profile.php">PROFILE</a></li>
-					
+					<li><a href="patient_details.php">PATIENT DETAILS</a></li>
 					<li><a href="Sign_out.php">LOGOUT</a></li> 
 					<li><a href="contactus.php">CONTACT US</a></li>
 				</ul>
@@ -81,7 +77,7 @@ if(empty($_SESSION["id"]))
     </header>
 <?php 
 		$id=$_SESSION["id"];
-		$sql="select * from patient where pid='$id'";
+		$sql="select * from patient where id='$id'";
 		$res=mysql_query($sql);
 		$result=mysql_fetch_assoc($res);
 	 ?>
@@ -195,37 +191,34 @@ if(empty($_SESSION["id"]))
                 </li>
                </ol>
              </div>
-              <div id="ar" class="tab-pane fade" >
+              <div id="ar" class="tab-pane fade">
                <ol class="commentlist">
                 <li class="comment">
-                  
-					<form action="attach.php" method="post" enctype="multipart/form-data">
-					
-					
-					<center><h3>Upload Attachment:</h3> </center>
-					
-					<textarea name="description" placeholder="Write omething here!" class="form-control input-lg" ></textarea>
-					<br>
-					<input type="file" name="attachement"  style="width:30%;float:left;margin-right:30px;padding:10px" >
-					<input type="submit" value=" Upload" class="btn btn-common" style="width:40%;margin-left:10px" >
-					<br><br>
-					<table style="width:100% ;border:1px solid black;padding:2px" class="table"><tr><th>S.NO</th><th>Name</th><th>Type</th><th>Description</th><th>Remove</th></tr>
-					<?php
-					$count=0;
-					$sql1="select * from attachement where pid='$id'";
-					$res=mysql_query($sql1);
-					while($result1=mysql_fetch_array($res,MYSQL_ASSOC)){
-					$count++;
-						echo "<tr><td>".$count."</td><td>".$result1['uploaded_file']."</td> <td>".$result1['ttype']."</td><td>".$result1['description']."</td><td>";
-						echo '<a href="remove.php?id="'.$result1['id'].'>Remove</a></td></tr>';
+                  <?php
+					$hid=$_SESSION['hid'];
+					$sql1="select * from appointment where status='approve' and hid='$hid'";
+					$res1=mysql_query($sql1);
+					if (! $res1){
+						die(mysql_error());
 					}
-					?>
-					
-					</table>
-					
-					</form>
-			
-					<?php  ?>
+					while($row1=mysql_fetch_assoc($res1)){
+						$pid=$row1['pid'];
+						$sql2="select name from patient where pid ='$pid'";
+						$res2=mysql_query($sql2);
+						$row2=mysql_fetch_assoc($res2);
+				?>
+                  <article class="clearfix comment-container">
+                    <div class="comment-content" style="padding-top:20px;">
+                      <cite class="fn" style="margin-right:10px;"><b><?php echo strtoupper($row2['name']); ?></b></cite>
+                      <time><?php echo $row1['applicationtime']." , ".$row1['applicationdate']; ?></time>
+                      <section class="comment_content clearfix">
+                        <p><?php echo "<b>PROBLEM : </b>".$row1['issue']."<br/><b>DESCRIPTION : </b>".$row1['discription']; ?></p>.
+                      </section>
+                    </div>
+					</article>
+					<hr/>
+				  <br>
+					<?php } ?>
                 </li>
                </ol>
              </div>

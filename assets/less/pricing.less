@@ -1,0 +1,53 @@
+// Preset Loader
+@import "presets.less";
+
+//Pricing Block 1
+#pricing-block-1{background: #ecf0f1}
+.pricing-table-1{
+	background: #fff;
+	margin: 0 15px;
+.table-header{padding: 30px 0; color: #fff; background: @preset; h3{font-family: loveloblack; font-size: 30px;}}
+.plan{padding: 15px 0; border-bottom: 1px solid rgba(189, 195, 199, 0.50); .price{font-size: 60px; font-family: loveloblack;} .period{font-size: 18px; color: #999; text-transform: uppercase;}}
+.plan-info{margin-top: 30px; p{color: #bdc3c7; font-size: 16px; line-height: 30px;}}
+.button-area{padding: 30px 0 45px 0;}
+}
+
+//Pricing Block x
+#pricing-block-x{background: #ecf0f1}
+.pricing-table-x{
+	background: #fff;
+	margin: 0 15px;
+.table-header{padding: 15px 0; color: #fff; background: url(../img/others/pricing-x-bg.jpg); h3{font-size: 30px;}}
+.table-header.highlight{background: url(../img/others/pricing-x-bg-highlight.jpg);}
+.plan{padding: 15px 0; border-bottom: 1px solid rgba(189, 195, 199, 0.50); .price{font-size: 60px; font-family: loveloblack; color: @preset;} 
+.period{font-size: 18px; color: @preset-70; text-transform: uppercase;}}
+.plan-info{margin-top: 30px; p{color: #bdc3c7; font-size: 16px; line-height: 30px;}}
+.button-area{padding: 30px 0 45px 0;}
+}
+
+
+
+//Pricing Block 2
+#pricing-block-2{background: @preset; color: #fff; .section-title:before{border-color: rgba(255, 255, 255, 0.50);}}
+	.pricing-table-2{
+		background: rgba(255, 255, 255, 0.11); 
+		padding: 30px 0;
+		text-transform: uppercase;
+		.period{
+			position: relative;
+			letter-spacing: 5px;
+			&:before{
+			position: absolute;
+			content: " ";
+			width: 30px;
+			bottom: -5px;
+			margin-left: 0;
+			margin-right: 0;
+			border-bottom: 2px solid #fff;
+		}
+	}
+
+		.price{font-size: 90px;  font-family: loveloblack; span{position: absolute; font-size: 24px; margin-left: -30px;}}
+
+		p{color: rgba(255, 255, 255, 0.50); padding-bottom: 20px;}
+	}

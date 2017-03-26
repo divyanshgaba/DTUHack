@@ -1,0 +1,45 @@
+/*You can add your won color also */
+#other-services .other-service-item {
+  padding-bottom: 30px;
+}
+#other-services .other-service-item i {
+  background: #e74c3c;
+  font-size: 24px;
+  color: #ffffff;
+  float: left;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 6px 24px 0 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+#other-services .other-service-item h3 {
+  color: #e74c3c;
+  font-size: 30px;
+}
+#other-services .other-service-item p {
+  padding: 0 36px 0 0;
+}
+#other-services .other-service-item:hover i {
+  -webkit-transform: rotateY(360deg);
+  -moz-transform: rotateY(360deg);
+  -o-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+  -webkit-transition: all 0.6s linear;
+  -moz-transition: all 0.6s linear;
+  -o-transition: all 0.6s linear;
+  transition: all 0.6s linear;
+  background: #666;
+}
+#other-services img {
+  max-width: 100%;
+}
